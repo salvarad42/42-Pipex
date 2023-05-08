@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_errors.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sr.lilitha <sr.lilitha@student.42.fr>      +#+  +:+       +#+        */
+/*   By: salvarad <salvarad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 17:53:38 by sr.lilitha        #+#    #+#             */
-/*   Updated: 2023/05/05 20:49:16 by sr.lilitha       ###   ########.fr       */
+/*   Updated: 2023/05/06 23:54:58 by salvarad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_print_error(char *program, char *pathname, char *str)
+void	ft_print_error(char *str, char *pathname)
 {
-	ft_putstr_fd(program, STDERR_FILENO);
 	ft_putstr_fd(str, STDERR_FILENO);
-	ft_putstr_fd(pathname, STDERR_FILENO);
-	ft_putchar_fd('\n', STDERR_FILENO);
+	ft_putendl_fd(pathname, STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
 
@@ -25,20 +23,20 @@ void	ft_check_errors(int argc, char **argv)
 {
 	int	fd;
 
-	if (argc <= 4)
-		ft_print_error(argv[0],"\0", ": invalid number of arguments");
+	if (argc != 5)
+		ft_print_error("pipex: invalid number of arguments", argv[1]);
 	else if (access(argv[1], F_OK))
-		ft_print_error(argv[0], argv[1], ": no such file or directory: ");
+		ft_print_error("pipex: no such file or directory: ", argv[1]);
 	else if (access(argv[1], R_OK))
-		ft_print_error(argv[0], argv[1], ": permission denied: ");
+		ft_print_error("pipex: permission denied: ", argv[1]);
 	fd = open(argv[1], O_DIRECTORY);
 	if (fd != -1)
 	{
 		close(fd);
-		ft_print_error(argv[0], argv[1], ": is not a file: ");
+		ft_print_error("pipex: is not a file: ", argv[1]);
 	}
 	fd = open(argv[argc - 1], O_CREAT | O_WRONLY, 0644);
 	if (fd == -1)
-		ft_print_error(argv[0], argv[argc - 1], ": permission denied: ");
+		ft_print_error("pipex: permission denied: ", argv[argc - 1]);
 	close(fd);
 }
