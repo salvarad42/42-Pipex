@@ -1,7 +1,7 @@
 
 NAME = pipex
 
-SRC = main.c ft_check_errors.c pipex.c
+SRC = ft_check_errors.c pipex.c
 
 OBJS = ${SRC:.c=.o}
 
