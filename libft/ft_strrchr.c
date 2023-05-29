@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: salvarad <salvarad@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: salvarad <salvarad@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 17:24:56 by sr.lilitha        #+#    #+#             */
-/*   Updated: 2023/05/22 20:54:44 by salvarad         ###   ########.fr       */
+/*   Created: 2022/09/29 11:30:35 by salvarad          #+#    #+#             */
+/*   Updated: 2022/09/29 11:50:30 by salvarad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef PIPEX_H
-# define PIPEX_H
+char	*ft_strrchr(const char *s, int c)
+{
+	int	len;
 
-# include "libft/libft.h"
-# include <fcntl.h>
-
-void	ft_check_errors(int argc, char **argv);
-void	ft_print_error(char *str, char *pathname);
-char	**ft_split_args(char const *s, char c);
-
-#endif
+	len = ft_strlen(s);
+	while (len > 0 && s[len] != (char) c)
+		len--;
+	if (s[len] == (char) c)
+		return ((char *) &s[len]);
+	return (0);
+}

@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: salvarad <salvarad@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: salvarad <salvarad@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 17:24:56 by sr.lilitha        #+#    #+#             */
-/*   Updated: 2023/05/22 20:54:44 by salvarad         ###   ########.fr       */
+/*   Created: 2022/10/06 13:26:08 by salvarad          #+#    #+#             */
+/*   Updated: 2022/10/10 10:37:16 by salvarad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef PIPEX_H
-# define PIPEX_H
+void	ft_putendl_fd(char *s, int fd)
+{
+	int	i;
 
-# include "libft/libft.h"
-# include <fcntl.h>
-
-void	ft_check_errors(int argc, char **argv);
-void	ft_print_error(char *str, char *pathname);
-char	**ft_split_args(char const *s, char c);
-
-#endif
+	i = 0;
+	while (s[i] != '\0')
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+	write(fd, "\n", 1);
+}

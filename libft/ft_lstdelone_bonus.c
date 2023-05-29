@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: salvarad <salvarad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 17:24:56 by sr.lilitha        #+#    #+#             */
-/*   Updated: 2023/05/22 20:54:44 by salvarad         ###   ########.fr       */
+/*   Created: 2022/10/10 13:18:35 by salvarad          #+#    #+#             */
+/*   Updated: 2023/05/29 15:06:46 by salvarad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <fcntl.h>
-
-void	ft_check_errors(int argc, char **argv);
-void	ft_print_error(char *str, char *pathname);
-char	**ft_split_args(char const *s, char c);
-
-#endif
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
+{
+	del(lst -> content);
+	free(lst);
+}

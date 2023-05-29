@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_errors.c                                  :+:      :+:    :+:   */
+/*   ft_check_errors_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: salvarad <salvarad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 17:53:38 by sr.lilitha        #+#    #+#             */
-/*   Updated: 2023/05/29 15:14:10 by salvarad         ###   ########.fr       */
+/*   Updated: 2023/05/22 20:26:24 by salvarad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 void	ft_print_error(char *str, char *pathname)
 {
 	ft_putstr_fd(str, STDERR_FILENO);
 	ft_putendl_fd(pathname, STDERR_FILENO);
-	exit (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
 
 void	ft_check_errors(int argc, char **argv)
@@ -24,10 +24,7 @@ void	ft_check_errors(int argc, char **argv)
 	int	fd;
 
 	if (argc != 5)
-	{
-		ft_putendl_fd("pipex: invalid number of arguments", STDERR_FILENO);
-		exit (EXIT_FAILURE);
-	}
+		ft_print_error("pipex: invalid number of arguments", argv[1]);
 	else if (access(argv[1], F_OK))
 		ft_print_error("pipex: no such file or directory: ", argv[1]);
 	else if (access(argv[1], R_OK))

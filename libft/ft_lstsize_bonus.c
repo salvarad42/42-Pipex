@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: salvarad <salvarad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 17:24:56 by sr.lilitha        #+#    #+#             */
-/*   Updated: 2023/05/22 20:54:44 by salvarad         ###   ########.fr       */
+/*   Created: 2022/10/10 12:29:42 by salvarad          #+#    #+#             */
+/*   Updated: 2023/05/29 15:08:38 by salvarad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <fcntl.h>
+int	ft_lstsize(t_list *lst)
+{
+	int	i;
 
-void	ft_check_errors(int argc, char **argv);
-void	ft_print_error(char *str, char *pathname);
-char	**ft_split_args(char const *s, char c);
-
-#endif
+	i = 0;
+	while (lst)
+	{
+		lst = lst -> next;
+		i++;
+	}
+	return (i);
+}

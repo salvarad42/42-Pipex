@@ -1,7 +1,7 @@
 
 NAME = pipex
 
-SRC = ft_check_errors.c pipex.c
+SRC = ft_split_args.c ft_check_errors.c pipex.c
 
 OBJS = ${SRC:.c=.o}
 
@@ -33,6 +33,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
-debug: CFLAGS += -g
-debug: ${NAME}

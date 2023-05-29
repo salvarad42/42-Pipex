@@ -6,7 +6,7 @@
 /*   By: salvarad <salvarad@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 22:29:44 by sr.lilitha        #+#    #+#             */
-/*   Updated: 2023/05/22 13:17:23 by salvarad         ###   ########.fr       */
+/*   Updated: 2023/05/22 20:42:00 by salvarad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_exec(char **argv, char **envp, int i)
 	char	**paths;
 	char	*cmd;
 
-	args = ft_split(argv[i], ' ');
+	args = ft_split_args(argv[i], ' ');
 	paths = ft_get_paths(envp);
 	cmd = ft_get_cmd(paths, args[0]);
 	execve(cmd, args, envp);
